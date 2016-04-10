@@ -1,0 +1,18 @@
+#sky-store
+  - ['rentals', 'buyAndKeep'].each do |store|
+    %section{class: store}
+      %h5=store
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Title
+          %th Cost
+      %tbody
+        - @bill.skyStore[store].each do |item|
+          %tr
+            %td=item.title
+            %td=item.cost
+      %tfoot
+        %tr
+          %td Sky Store Total:
+          %td= @bill.skyStore.total

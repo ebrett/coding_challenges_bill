@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rspec'
+gem 'capybara'
 gem 'rack-test', require: 'rack/test'
 
 gem 'pry'
 
-gem 'sass'
 gem 'haml'

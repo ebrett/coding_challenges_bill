@@ -1,0 +1,16 @@
+#call-charges
+  .panel-body
+    %table.table.table-striped
+      %tr
+        %th Called
+        %th Duration
+        %th Cost
+      - @bill.callCharges.calls.each do |call|
+        %tr
+          %td= call.called
+          %td= call.duration
+          %td= call.cost
+  .panel-footer
+    %h5
+      Call Charges Total:
+      =@bill.callCharges.total

@@ -1,0 +1,15 @@
+#package
+  %table.table.table-striped
+    %tr
+      %th Type
+      %th Name
+      %th Cost
+    - @bill.package.subscriptions.each do |sub|
+      %tr
+        %td=sub.type
+        %td=sub.name
+        %td=sub.cost
+  .panel-footer
+    %h5
+      Package Total:
+      = @bill.package.total

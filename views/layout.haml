@@ -1,9 +1,39 @@
 !!!5
 %html{lang: "en"}
   %head
-    %link{href: '/stylesheets/styles.css', rel: "stylesheet", type: "text/css"}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    %link{href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel: "stylesheet", integrity: "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin: "anonymous"}
+    %script{src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity: "sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin: "anonymous"}
   %body
     .container
-      =yield
-      %footer
-        this is the footer
+      %h1 Sky
+      .row
+        .panel.panel-primary.col-md-4
+          .panel-title
+            %h3 Statement
+          %ul.list-group
+            %li.list-group-item
+              Generated:
+              = @bill.statement.generated
+            %li.list-group-item
+              Billing period from:
+              = @bill.statement.period.from
+            %li.list-group-item
+              To:
+              = @bill.statement.period.to
+            %li.list-group-item
+              Bill payment due:
+              =@bill.statement.due
+          .panel-footer
+          %ul.nav.nav-pills.nav-stacked
+            %li
+              %a{href: '/package'}
+                Package
+            %li
+              %a{href: '/call-charges'}
+                Call Charges
+            %li
+              %a{href: 'sky-store'}
+                Sky Store
+        .col-md-8
+          =yield
