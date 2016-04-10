@@ -9,7 +9,9 @@
       %h1 Sky
       .row
         .col-md-4
-          %h3 Statement
+          %h3
+            %a{href: '/'}
+              Statement
           %ul.list-group
             %li.list-group-item
               Statement date:
@@ -23,15 +25,5 @@
               Payment due:
               .pull-right
                 = format_date(@bill.statement.due)
-          %ul.nav.nav-pills.nav-stacked
-            %li
-              %a{href: '/package'}
-                Package
-            %li
-              %a{href: '/call-charges'}
-                Call Charges
-            %li
-              %a{href: 'sky-store'}
-                Sky Store
         .col-md-8
           =yield

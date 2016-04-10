@@ -27,6 +27,10 @@ def store_title(title_code)
   {'rentals' => 'Rentals', 'buyAndKeep' => 'Buy and Keep'}[title_code]
 end
 
+def sub_type(subscription)
+  {'tv' => 'TV', 'talk' => 'Sky Talk', 'broadband' => 'Sky Broadband'}[subscription.type]
+end
+
 def format_cost(cost)
   "£" + ("%.2f" % cost)
 end
