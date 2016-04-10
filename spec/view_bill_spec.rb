@@ -27,12 +27,10 @@ RSpec.describe "Display Sky Bill", type: :feature do
   context "main page" do
     before { visit '/' }
 
-    let(:body) { last_response.body }
     it 'shows statement statement dates' do
-      expect(page).to have_content("Generated: 2015-01-11")
-      expect(page).to have_content("Billing period from: 2015-01-26")
-      expect(page).to have_content("To: 2015-02-25")
-      expect(page).to have_content("Bill payment due: 2015-01-25")
+      expect(page).to have_content("Statement date: 11 Jan 2015")
+      expect(page).to have_content("For period: 26 Jan 2015 to 25 Feb 2015")
+      expect(page).to have_content("Payment due: 25 Jan 2015")
     end
 
     it 'provides navigation to sections' do
@@ -48,5 +46,14 @@ RSpec.describe "Display Sky Bill", type: :feature do
       expect(page).to have_content "Sky Store Total: £24.97"
     end
 
+  end
+
+  context "package details" do
+    before { visit '/' }
+
+    it 'can be navigated to from main page' do
+      click_link 'Package'
+      expect(page).to have_content("Subscriptions")
+    end
   end
 end

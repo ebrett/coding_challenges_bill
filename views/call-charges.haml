@@ -1,16 +1,21 @@
-#call-charges
-  .panel-body
-    %table.table.table-striped
+#call-charges.panel.panel-default
+  .panel-heading
+    .panel-title
+      %h3 Call Charges
+  %table.table.table-striped
+    %tr
+      %th Called
+      %th Duration
+      %th Cost
+    - @bill.callCharges.calls.each do |call|
       %tr
-        %th Called
-        %th Duration
-        %th Cost
-      - @bill.callCharges.calls.each do |call|
-        %tr
-          %td= call.called
-          %td= call.duration
-          %td= call.cost
+        %td= call.called
+        %td= call.duration
+        %td
+          .pull-right
+            = format_cost(call.cost)
   .panel-footer
     %h5
       Call Charges Total:
-      =@bill.callCharges.total
+      .pull-right
+        =format_cost(@bill.callCharges.total)

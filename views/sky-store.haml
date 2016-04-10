@@ -1,18 +1,26 @@
 #sky-store
-  - ['rentals', 'buyAndKeep'].each do |store|
-    %section{class: store}
-      %h5=store
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Title
-          %th Cost
-      %tbody
-        - @bill.skyStore[store].each do |item|
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        %h3 Sky Store
+    - ['rentals', 'buyAndKeep'].each do |store|
+      .panel.pane-default
+        .panel-heading
+          .panel-title
+            %h5=store_title(store)
+      %table.table.table-striped
+        %thead
           %tr
-            %td=item.title
-            %td=item.cost
-      %tfoot
-        %tr
-          %td Sky Store Total:
-          %td= @bill.skyStore.total
+            %th Title
+            %th Cost
+        %tbody
+          - @bill.skyStore[store].each do |item|
+            %tr
+              %td=item.title
+              %td
+                .pull-right
+                  =format_cost(item.cost)
+    .panel-footer
+      Sky Store Total:
+      .pull-right
+        =format_cost(@bill.skyStore.total)

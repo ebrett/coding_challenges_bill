@@ -8,23 +8,21 @@
     .container
       %h1 Sky
       .row
-        .panel.panel-primary.col-md-4
-          .panel-title
-            %h3 Statement
+        .col-md-4
+          %h3 Statement
           %ul.list-group
             %li.list-group-item
-              Generated:
-              = @bill.statement.generated
+              Statement date:
+              .pull-right
+                = format_date(@bill.statement.generated)
             %li.list-group-item
-              Billing period from:
-              = @bill.statement.period.from
+              For period:
+              .pull-right
+                = format_period(@bill.statement.period)
             %li.list-group-item
-              To:
-              = @bill.statement.period.to
-            %li.list-group-item
-              Bill payment due:
-              =@bill.statement.due
-          .panel-footer
+              Payment due:
+              .pull-right
+                = format_date(@bill.statement.due)
           %ul.nav.nav-pills.nav-stacked
             %li
               %a{href: '/package'}
