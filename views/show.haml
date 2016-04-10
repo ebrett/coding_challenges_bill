@@ -2,20 +2,20 @@
   %li.list-group-item
     Package Total:
     .pull-right
-      =@bill.package.total
+      =format_cost(@bill.package.total)
 
   %li.list-group-item
     Call Charges Total:
     .pull-right
-      =@bill.callCharges.total
+      =format_cost(@bill.callCharges.total)
 
   %li.list-group-item
     Sky Store Total:
     .pull-right
-      =@bill.skyStore.total
+      =format_cost(@bill.skyStore.total)
 
-  %li.list-group-item
+  %li.list-group-item.list-group-item-info
     Statement Total:
     .pull-right
-      =@bill.total
+      =format_cost(@bill.total)
     .clearfix

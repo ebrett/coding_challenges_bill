@@ -8,3 +8,7 @@ get '/' do
   @bill = JSON.parse(json, object_class: OpenStruct)
   haml :show
 end
+
+def format_cost(cost)
+  "£" + ("%.2f" % cost)
+end
