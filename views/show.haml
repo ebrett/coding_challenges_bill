@@ -1,0 +1,74 @@
+%h1 Sky
+
+%section
+  %h3 Statement
+  %ul
+    %li
+      Generated:
+      = @bill.statement.generated
+    %li
+      From:
+      = @bill.statement.period.from
+    %li
+      To:
+      = @bill.statement.period.to
+    %li
+      Bill payment due:
+      = @bill.statement.due
+
+  %h5
+    Statement Total:
+    =@bill.total
+
+%section
+  %h3 Package
+  - @bill.package.subscriptions.each do |sub|
+    %ul
+      %li
+        Type:
+        = sub.type
+      %li
+        Name:
+        = sub.name
+      %li
+        Cost:
+        = sub.cost
+  %h5
+    Package Total:
+    = @bill.package.total
+
+%section
+  %h3 Call Charges
+  %table
+    %tr
+      %th Called
+      %th Duration
+      %th Cost
+    - @bill.callCharges.calls.each do |call|
+      %tr
+        %td= call.called
+        %td= call.duration
+        %td= call.cost
+  %h5
+    Call Charges Total:
+    =@bill.callCharges.total
+
+%section
+  %h3 Sky Store
+  - ['rentals', 'buyAndKeep'].each do |store|
+    %section{class: store}
+      %h5=store
+    %table
+      %thead
+        %tr
+          %th Title
+          %th Cost
+      %tbody
+        - @bill.skyStore[store].each do |item|
+          %tr
+            %td=item.title
+            %td=item.cost
+      %tfoot
+        %tr
+          %td Total:
+          %td= @bill.skyStore.total
