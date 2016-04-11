@@ -27,6 +27,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (3.4.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -44,6 +45,8 @@ GEM
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
     safe_yaml (1.0.4)
+    shotgun (0.9.1)
+      rack (>= 1.0)
     slop (3.6.0)
     tilt (2.0.2)
     webmock (1.24.2)
@@ -60,8 +63,10 @@ DEPENDENCIES
   capybara
   haml
   pry
+  puma
   rack-test
   rspec
+  shotgun
   webmock
 
 BUNDLED WITH

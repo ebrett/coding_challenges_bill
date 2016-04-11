@@ -1,9 +1,5 @@
 require 'sinatra'
 require 'haml'
-require 'sass/plugin/rack'
-require './skybill'
+require './app'
 
-Sass::Plugin.options[:style] = :compressed
-use Sass::Plugin::Rack
-
-run Sinatra::Application
+run Statement

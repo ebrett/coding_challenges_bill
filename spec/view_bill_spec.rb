@@ -1,7 +1,7 @@
 require 'rspec'
 require 'rack/test'
 require 'capybara/rspec'
-require './skybill'
+require './app'
 require 'webmock/rspec'
 require 'fake_statement'
 
@@ -34,6 +34,7 @@ RSpec.describe "Display Sky Bill", type: :feature do
     end
 
     it 'provides navigation to sections' do
+      expect(page).to have_link("Statement")
       expect(page).to have_link("Package")
       expect(page).to have_link("Call Charges")
       expect(page).to have_link("Sky Store")
