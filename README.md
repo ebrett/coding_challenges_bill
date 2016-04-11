@@ -4,16 +4,17 @@ Ensure bundler is available and install gems
 
 ```
  gem install bundler
+ gem install sinatra
  bundle install
 ```
 
 Run the proxy server
 
 ```
- bundle exec shotgun -p 9394 proxy_config.ru
+ ruby -p 9394 proxy_server.rb
 ```
 
-Run the statement app
+Run the statement app 
 
 ```
  bundle exec shotgun

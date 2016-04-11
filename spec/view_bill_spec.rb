@@ -10,7 +10,7 @@ WebMock.disable_net_connect!
 RSpec.configure do |config|
   config.before(:each) do
     WebMock.enable!
-    stub_request(:any, /safe-plains-5453.herokuapp.com/).to_rack(FakeStatement)
+    stub_request(:any, /localhost/).to_rack(FakeStatement)
   end
 end
 
