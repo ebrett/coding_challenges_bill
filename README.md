@@ -11,7 +11,7 @@ Ensure bundler is available and install gems
 Run the proxy server
 
 ```
- ruby -p 9394 proxy_server.rb
+ ruby proxy_server.rb -p 9394
 ```
 
 Run the statement app 
