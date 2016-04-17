@@ -4,20 +4,13 @@ Ensure bundler is available and install gems
 
 ```
  gem install bundler
- gem install sinatra
  bundle install
 ```
 
-Run the proxy server
+Run the statement app / proxy server
 
 ```
- ruby proxy_server.rb -p 9394
+ bundle exec foreman start -f Procfile
 ```
 
-Run the statement app 
-
-```
- bundle exec shotgun
-```
-
-Visit [your new statement](http://localhost:9393)
+Visit [your new statement](http://localhost:9292)
