@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
 require 'haml'
-require './app'
+require './proxy_server.rb'
 
-run Statement
+run ProxyServer

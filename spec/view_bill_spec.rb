@@ -19,7 +19,7 @@ RSpec.describe "Display Sky Bill", type: :feature do
   include Rack::Test::Methods
 
   def app
-    Sinatra::Application
+    Statement
   end
 
   before { Capybara.app = app }

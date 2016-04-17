@@ -3,62 +3,64 @@ require 'net/http'
 require 'json'
 require 'tilt/haml'
 
-get '/' do
-  fetch_bill
-  haml :show
-end
+class Statement < Sinatra::Application
+  before { fetch_bill }
 
-get '/package' do
-  fetch_bill
-  haml :package
-end
+  get '/' do
+    haml :show
+  end
 
-get '/call-charges' do
-  fetch_bill
-  haml :'call-charges'
-end
+  get '/package' do
+    haml :package
+  end
 
-get '/sky-store' do
-  fetch_bill
-  haml :'sky-store'
-end
+  get '/call-charges' do
+    haml :'call-charges'
+  end
 
-# Helpers
-def store_title(title_code)
-  {'rentals' => 'Rentals',
-   'buyAndKeep' => 'Buy and Keep'}[title_code]
-end
+  get '/sky-store' do
+    haml :'sky-store'
+  end
 
-def sub_type(subscription)
-  {'tv' => 'TV',
-   'talk' => 'Sky Talk',
-   'broadband' => 'Sky Broadband'}[subscription.type]
-end
+  # Helpers
+  helpers do 
+    def store_title(title_code)
+      {'rentals' => 'Rentals',
+      'buyAndKeep' => 'Buy and Keep'}[title_code]
+    end
 
-def format_cost(cost)
-  "£" + ("%.2f" % cost)
-end
+    def sub_type(subscription)
+      {'tv' => 'TV',
+      'talk' => 'Sky Talk',
+      'broadband' => 'Sky Broadband'}[subscription.type]
+    end
 
-def format_date(date_str)
-  Date.parse(date_str).strftime('%d %b %Y')
-end
+    def format_cost(cost)
+      "£" + ("%.2f" % cost)
+    end
 
-def format_period(period)
-  format_date(period.from) + ' to ' + format_date(period.to)
-end
+    def format_date(date_str)
+      Date.parse(date_str).strftime('%d %b %Y')
+    end
 
-private
+    def format_period(period)
+      format_date(period.from) + ' to ' + format_date(period.to)
+    end
+  end
 
-def host
-  'localhost'
-end
+  private
 
-def port
-  '9394'
-end
+  def host
+    'localhost'
+  end
 
-def fetch_bill
-  return if @bill
-  json = Net::HTTP.get( host, '/bill.json', port)
-  @bill = JSON.parse(json, object_class: OpenStruct)
+  def port
+    '9393'
+  end
+
+  def fetch_bill
+    return if @bill
+    json = Net::HTTP.get( host, '/bill.json', port)
+    @bill = JSON.parse(json, object_class: OpenStruct)
+  end
 end

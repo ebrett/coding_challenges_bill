@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'shotgun'
+gem 'sinatra'
 gem 'puma'
+gem 'foreman'
 
 gem 'rspec'
 gem 'capybara'
